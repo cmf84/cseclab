@@ -16,11 +16,16 @@ We'll start by building the image as defined in the Dockerfile included in this 
 
 **This will require Docker Desktop**. After a couple of minutes this should have finished to build the image.
 
-Next we'll scan the image for CVEs using the built-in tool with the next command
+Next we'll do a detailed scan of our image to check CVEs using the built-in tool with the next command
 
-` docker scan hello-tomcat `
+` docker scan --file=Dockerfile hello-tomcat `
 
-This will report a large number of CVE 
+This will report a large number of CVE and trace them back to the base image that we used in the Dockerfile:
+![Screenshot of scan report showing problems found in the base image](scan_img1.png)
+
+In order to remove these CVE we can change to a version of the base image with much less vulnurabilities. In this case, change the Dockerfile to refer to the `tomcat:8-jdk11-corretto` image file
+
+Afterwards, save the Dockefile and build the image again
 
 ---
 Note: the same scans could be performed without Docker using Snyk's toolchain. For information on how to install and use those tools see e.g. [Lynk CLI docs](https://support.snyk.io/hc/en-us/articles/360003812538-Install-the-Snyk-CLI)
