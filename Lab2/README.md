@@ -139,4 +139,4 @@ To verify this start some container image:
 
 Now repeat the Docker Bench scan and observe the output. 
 
-Solving the additional warning is left to the reader as an exercise.
+Solving the additional warning is left to the reader as an exercise. See also this [summary of Docker-bench scanning](https://www.dennyzhang.com/docker_bench_security) for further reading.
